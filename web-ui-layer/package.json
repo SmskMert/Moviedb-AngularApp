@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "ci:prod": "ng build --output-path=public",
+    "ci:prod": "ng build --output-path=../public",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test:ci": "ng test --browsers=Headless --no-watch"
