@@ -39,5 +39,8 @@ pages:
     - npm install -g @angular/cli
     - npm i
     - npm run ci:prod
+  artifacts:
+    paths:
+      - public
   only:
     - ci-cd
