@@ -1,0 +1,43 @@
+
+stages:
+  - build
+  - test
+  - pages
+
+before_script:
+    - cd web-ui-layer
+
+build:
+  stage: build
+  image: node:latest
+  tags:
+    - linux
+    - docker
+  script:
+    - npm install -g @angular/cli
+    - npm i
+    - npm run build
+
+test:
+  stage: test
+  image: roping4473/node-chrome:v1
+  tags:
+    - linux
+    - docker
+  script:
+    - export CHROME_BIN=/usr/bin/google-chrome
+    - npm ci
+    - npm run test:ci
+
+pages:
+  stage: pages
+  image: node:latest
+  tags:
+    - linux
+    - docker
+  script:
+    - npm install -g @angular/cli
+    - npm i
+    - npm run ci:prod
+  only:
+    - ci-cd

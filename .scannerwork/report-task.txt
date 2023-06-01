@@ -1,0 +1,6 @@
+projectKey=mert.simsek_my-first-angular-app_AYhISCgCpGgbxblCSTTM
+serverUrl=https://sonarqube.piworks.net
+serverVersion=10.0.0.68432
+dashboardUrl=https://sonarqube.piworks.net/dashboard?id=mert.simsek_my-first-angular-app_AYhISCgCpGgbxblCSTTM
+ceTaskId=AYhIcjD4pGgbxblCSTT1
+ceTaskUrl=https://sonarqube.piworks.net/api/ce/task?id=AYhIcjD4pGgbxblCSTT1

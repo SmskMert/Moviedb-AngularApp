@@ -1,0 +1,86 @@
+<div class="card">
+  <div class="card-header text-center text-primary fs-3 display-6">
+    {{ pageTitle }}
+  </div>
+  <div *ngIf="movie$ | async as movie">
+    <app-movie-details [movie]="movie"></app-movie-details>
+  </div>
+  <div class="p-3 border-bottom d-flex justify-content-between">
+  <div
+    class="d-flex justify-content-start align-items-center"
+    *ngIf="movieGenres$ | async as movieGenres"
+  >
+    <span class="me-2 display-6 fs-5 text-primary">Genres: </span>
+    <button
+      type="button"
+      class="btn btn-outline-primary me-1"
+      [ngClass]="selectedGenre == movieGenre.id ? 'active' : ''"
+      *ngFor="let movieGenre of movieGenres"
+      (click)="onCategoryClicked(movieGenre.id)"
+    >
+      {{ movieGenre.name }}
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-outline-secondary"
+      (click)="onCategoryClicked(0)"
+    >
+      Show All
+    </button>
+  </div>
+  <div>
+    <a routerLink="/movie-create" routerLinkActive="active" class="btn btn-outline-success">Create Movie</a>
+  </div>
+</div>
+  <div class="table-responsive">
+    <table
+      class="table mb-0"
+      aria-label="movies"
+      *ngIf="movies$ | async as movies"
+    >
+      <thead>
+        <tr>
+          <th>Movie Id</th>
+          <th>Title</th>
+          <th>Release Date</th>
+          <th>Director</th>
+          <th>Genre</th>
+          <th>Rating</th>
+          <th>Budget</th>
+          <th>Language</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let movie of movies">
+          <td>{{ movie.id }}</td>
+          <td>{{ movie.title }}</td>
+          <td>{{ movie.releaseDate }}</td>
+          <td>{{ movie.director }}</td>
+          <td>{{ movie.genre }}</td>
+          <td>{{ movie.rating }}</td>
+          <td>{{ movie.budget }}</td>
+          <td>{{ movie.language }}</td>
+          <td>
+            <div class="d-flex">
+              <button
+                type="button"
+                class="btn btn-outline-info btn-sm me-1"
+                (click)="onDetailClicked(movie.id)"
+              >
+                Details
+              </button>
+              <a [routerLink]="['/movie-update', movie.id]" routerLinkActive="active" class="me-1 btn btn-sm btn-outline-warning">update</a>
+              <a class="btn btn-sm btn-outline-danger">delete</a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="alert alert-danger" *ngIf="errorMessage">
+  {{ errorMessage }}
+</div>
