@@ -41,6 +41,6 @@ pages:
     - npm run ci:prod
   artifacts:
     paths:
-      - public
+      - web-ui-layer/public
   only:
     - ci-cd
