@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { MovieService } from '../movie.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-update',
@@ -54,12 +54,14 @@ export class MovieUpdateComponent implements OnInit {
         genreId: +this.genreForm.value.genreId,
       });
     }
+    this.router.navigate(['/movies']);
   }
 
   constructor(
     private movieGenreService: MovieGenreService,
     private movieService: MovieService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router:Router
   ) {}
 
   ngOnInit(): void {

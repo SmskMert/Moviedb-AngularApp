@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { Movie } from '../movies/movie';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-create',
@@ -42,7 +43,8 @@ export class MovieCreateComponent {
   constructor(
     private movieGenreService: MovieGenreService,
     private movieService: MovieService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {}
 
   getGenreId(formGroup: FormGroup): number {
@@ -79,5 +81,6 @@ export class MovieCreateComponent {
     };
     console.log(newMovie);
     this.movieService.addMovie(newMovie);
+    this.router.navigate(['/movies']);
   }
 }
